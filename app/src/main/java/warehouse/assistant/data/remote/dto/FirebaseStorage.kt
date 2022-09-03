@@ -11,9 +11,12 @@ import warehouse.assistant.data.Constants
 import warehouse.assistant.data.DateFormater
 import warehouse.assistant.data.csv.ItemsParser
 import warehouse.assistant.data.local.ItemEntity
+import warehouse.assistant.data.local.StorageCard
 import warehouse.assistant.data.local.StorageCardItemEntity
 import warehouse.assistant.domain.model.AuthorizedUser
 import warehouse.assistant.domain.model.Item
+import warehouse.assistant.domain.model.Storage
+import warehouse.assistant.domain.model.StorageCardItem
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -69,10 +72,41 @@ class FirebaseStorage @Inject constructor(
 
 
     fun updateUserRole(user:AuthorizedUser,role:String,isSuccessfull:(Boolean)->Unit){
-            db.collection(Constants.USERS).document(user.email).update(role,role)
+            db.collection(Constants.USERS).document(user.email).update("role",role)
                 .addOnSuccessListener { isSuccessfull(true) }
                 .addOnFailureListener {  isSuccessfull(false)}
     }
+
+    fun updateStorages(storages:List<Storage>){
+        var ref = db.collection(Constants.STORAGE_ENTITY)
+        db.runBatch { batch ->
+            storages.forEach { storage ->
+
+                batch.set(ref.document(storage.storageName),storage)
+            }
+        }
+    }
+
+    fun updateStorageCardItems(storageCardItems:List<StorageCardItem>){
+        var ref = db.collection(Constants.STORAGE_CARD_ITEM_ENTITY)
+        db.runBatch { batch ->
+            storageCardItems.forEach { cardItem ->
+
+                batch.set(ref.document(cardItem.itemId+" "+cardItem.time.toString()),cardItem)
+            }
+        }
+    }
+
+    fun updateStorageCards(storageCards:List<StorageCard>){
+        var ref = db.collection(Constants.STORAGE_CARD)
+        db.runBatch { batch ->
+            storageCards.forEach { card ->
+                batch.set(ref.document(card.itemId+" "+card.time.toString()),card)
+            }
+        }
+    }
+
+
 
     fun getStorageCardItemEntity(): Task<QuerySnapshot> {
         return db.collection(Constants.STORAGE_CARD_ITEM_ENTITY).get()

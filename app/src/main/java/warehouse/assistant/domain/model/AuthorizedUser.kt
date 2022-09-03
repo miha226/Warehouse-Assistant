@@ -1,8 +1,8 @@
 package warehouse.assistant.domain.model
 
-data class AuthorizedUser (
-    val email: String,
-    val username: String,
-    val role: String,
-    val time: Long
+data class AuthorizedUser(
+    val email: String = "placeholderMail",
+    val username: String = "placeholderUsername",
+    val role: String = "error role",
+    val time: Long = 1
     )

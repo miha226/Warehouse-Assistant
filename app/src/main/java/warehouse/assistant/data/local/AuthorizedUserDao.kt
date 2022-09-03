@@ -11,6 +11,13 @@ interface AuthorizedUserDao {
     @Delete
     suspend fun deleteUser(user: AuthorizedUserEntity)
 
+    @Transaction
+    @Query("UPDATE AuthorizedUserEntity SET role=(:role) WHERE LOWER(email)==LOWER(:email)")
+    suspend fun updateUserRole(email:String,role:String)
+
+    @Transaction
+    @Query("SELECT * FROM AUTHORIZEDUSERENTITY WHERE LOWER(email) == LOWER(:query)")
+    suspend fun getUSerByEmail(query: String):AuthorizedUserEntity
 
 
     //ITEM

@@ -3,9 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Michael/Desktop/mobilna_aplikacija/app/src/main/res/drawable/ic_audit_report_survey_icon.xml" value="0.196" />
+        <entry key="..\:/Users/Michael/Desktop/mobilna_aplikacija/app/src/main/res/drawable/ic_box_package_icon.xml" value="0.196" />
+        <entry key="..\:/Users/Michael/Desktop/mobilna_aplikacija/app/src/main/res/drawable/ic_goods_contents_icon.xml" value="0.196" />
         <entry key="..\:/Users/Michael/Desktop/mobilna_aplikacija/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1745" />
+        <entry key="..\:/Users/Michael/Desktop/mobilna_aplikacija/app/src/main/res/drawable/ic_log_in_icon.xml" value="0.196" />
         <entry key="..\:/Users/Michael/Desktop/mobilna_aplikacija/app/src/main/res/drawable/ic_package_replacement_icon.xml" value="0.1745" />
         <entry key="..\:/Users/Michael/Desktop/mobilna_aplikacija/app/src/main/res/drawable/ic_qr_code_scan_icon.xml" value="0.1175" />
+        <entry key="..\:/Users/Michael/Desktop/mobilna_aplikacija/app/src/main/res/drawable/ic_users_icon.xml" value="0.196" />
+        <entry key="..\:/Users/Michael/Desktop/mobilna_aplikacija/app/src/main/res/drawable/ic_visibility_black_24dp.xml" value="0.196" />
+        <entry key="..\:/Users/Michael/Desktop/mobilna_aplikacija/app/src/main/res/drawable/ic_visibility_off_black_24dp.xml" value="0.196" />
       </map>
     </option>
   </component>

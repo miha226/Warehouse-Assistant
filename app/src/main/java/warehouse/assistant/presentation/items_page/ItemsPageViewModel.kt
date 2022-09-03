@@ -1,7 +1,5 @@
-package warehouse.assistant.presentation
+package warehouse.assistant.presentation.items_page
 
-import android.content.ContentValues
-import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -9,16 +7,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
-import warehouse.assistant.data.csv.ItemsParser
 import warehouse.assistant.data.remote.dto.FirebaseStorage
 import warehouse.assistant.domain.repository.StorageRepository
-import warehouse.assistant.presentation.items_page.ItemsPageEvent
-import warehouse.assistant.presentation.items_page.ItemsPageState
 import warehouse.assistant.util.Resource
 import javax.inject.Inject
 
 @HiltViewModel
-class StorageViewModel @Inject constructor(
+class ItemsPageViewModel @Inject constructor(
     private val repository: StorageRepository,
     private val firebaseStorage: FirebaseStorage
 ): ViewModel() {

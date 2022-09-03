@@ -10,7 +10,7 @@ import androidx.room.RoomDatabase
         StorageCardItemEntity::class,
         StorageCard::class
     ],
-    version = 3
+    version = 4
 )
 abstract class CompanyDB: RoomDatabase() {
     abstract val userDao: AuthorizedUserDao

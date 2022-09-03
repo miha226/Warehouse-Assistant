@@ -4,9 +4,9 @@ import android.content.ContentValues.TAG
 import android.content.Context
 import android.util.Log
 import android.widget.Toast
+import androidx.compose.runtime.mutableStateOf
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.ktx.Firebase
 import warehouse.assistant.data.Constants
 import warehouse.assistant.data.DateFormater
@@ -21,6 +21,22 @@ class FirebaseAuthImpl @Inject constructor(
 ) {
     private var auth: FirebaseAuth = Firebase.auth
 
+    companion object{
+        private val userPlaceholder = AuthorizedUser("errorMail","error","worker",1)
+        val user = mutableStateOf(userPlaceholder)
+
+
+        fun putUser(userS:AuthorizedUser){
+            user.value=userS
+        }
+
+        fun getUser():AuthorizedUser{
+            return user.value
+        }
+        fun signOut(){
+            Firebase.auth.signOut()
+        }
+    }
 
     fun signIn(email:String, password:String, context: Context,callback: ((Boolean) -> Unit)){
         auth.signInWithEmailAndPassword(email, password)
@@ -71,6 +87,7 @@ class FirebaseAuthImpl @Inject constructor(
         if(auth.currentUser != null){return true}
         return false
     }
+
 
 
     fun getUserEmail():String{

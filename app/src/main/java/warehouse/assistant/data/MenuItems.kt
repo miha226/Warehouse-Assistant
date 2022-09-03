@@ -4,6 +4,7 @@ import warehouse.assistant.domain.model.MenuItem
 import warehouse.assistant.presentation.destinations.ItemsPageDestination
 import warehouse.assistant.presentation.destinations.StoragesPageDestination
 import warehouse.assistant.R
+import warehouse.assistant.data.remote.dto.FirebaseAuthImpl
 import warehouse.assistant.presentation.destinations.LoginPageDestination
 import warehouse.assistant.presentation.destinations.UsersPageDestination
 
@@ -24,4 +25,11 @@ object MenuItems {
     val adminMenu:List<MenuItem> = listOf(itemsPageMenu, storagesPageMenu, usersPage)
 
     val workerMenu:List<MenuItem> = listOf(itemsPageMenu, storagesPageMenu)
+
+    fun getMenu():List<MenuItem>{
+        var role = FirebaseAuthImpl.getUser().role
+        if(role=="admin" ||role=="owner") return adminMenu
+        else if (role=="worker") return workerMenu
+        else return emptyList()
+    }
 }

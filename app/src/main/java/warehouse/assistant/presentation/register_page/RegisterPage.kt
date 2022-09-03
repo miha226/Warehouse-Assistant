@@ -16,6 +16,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import warehouse.assistant.R
+import warehouse.assistant.data.DateFormater
 import warehouse.assistant.presentation.AuthViewModel
 import warehouse.assistant.presentation.destinations.ItemsPageDestination
 import warehouse.assistant.presentation.destinations.LoginPageDestination
@@ -71,7 +72,11 @@ fun RegisterPage(
                         if(!authService.isUserLoggedIn()){
                             authService.registerUser(email,password,mContext,username) {
                                 if (it) {
-                                    navigator.navigate(ItemsPageDestination)
+                                    authViewModel.addUserInLocalDB(email,username,DateFormater.getCurrentMillis()){
+                                        authViewModel.setUser {
+                                            navigator.navigate(ItemsPageDestination)
+                                        }
+                                    }
                                 }
                             }
                         }

@@ -17,7 +17,6 @@ class ItemsParser @Inject constructor(): CSVParser<Item> {
     override suspend fun parse(stream: InputStream): List<Item> {
         val csvReader = CSVReader(InputStreamReader(stream))
         return withContext(Dispatchers.IO){
-            Log.d(ContentValues.TAG,"Document data3 usao u coroutinu")
             csvReader
                 .readAll()
                 .drop(1)
@@ -35,8 +34,6 @@ class ItemsParser @Inject constructor(): CSVParser<Item> {
                         price = price ?: return@mapNotNull null
                     )
                 }.also { csvReader.close()
-                    var test = it.isEmpty()
-                    Log.d(ContentValues.TAG,"Document data33 dosao je do pocetka ${it.get(0).toString()} aha")
                 return@withContext it}
         }
     }

@@ -2,7 +2,6 @@ package warehouse.assistant.presentation.login_page
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.icons.Icons
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -12,16 +11,15 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
-import warehouse.assistant.data.remote.dto.FirebaseAuthImpl
 import warehouse.assistant.presentation.destinations.RegisterPageDestination
 import warehouse.assistant.R
 import warehouse.assistant.presentation.AuthViewModel
 import warehouse.assistant.presentation.destinations.ItemsPageDestination
+import warehouse.assistant.presentation.destinations.StoragesPageDestination
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Destination(start = true)
@@ -37,7 +35,8 @@ fun LoginPage(
     var passwordVisible by remember { mutableStateOf(false) }
     LaunchedEffect(Unit ){
         if(authService.isUserLoggedIn()){
-            navigator.navigate(ItemsPageDestination)
+            authViewModel.setUser { }//LoggedUser.putUser(it) }
+            navigator.navigate(StoragesPageDestination)
         }
     }
     Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
@@ -75,7 +74,9 @@ fun LoginPage(
                         if(!authService.isUserLoggedIn()){
                             authService.signIn(email,password,mContext){
                                 if (it) {
-                                    navigator.navigate(ItemsPageDestination)
+                                    authViewModel.setUser {
+                                        navigator.navigate(ItemsPageDestination)
+                                    }
                                 }
                             }
                         }

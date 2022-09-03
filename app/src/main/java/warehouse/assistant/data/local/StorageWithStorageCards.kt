@@ -8,7 +8,7 @@ data class StorageWithStorageCards(
     @Embedded val storage: StorageEntity,
     @Relation(
         parentColumn = "storageName",
-        entityColumn = "time",
+        entityColumn = "itemId",
         associateBy = Junction(StorageCard::class)
     ) val storageCards: List<StorageCardItemEntity>
 )

@@ -19,6 +19,7 @@ import warehouse.assistant.R
 fun ItemsScaffold(
  drawerState: DrawerState,
  onGetItemsFromFirebaseClick: () -> Unit,
+ scanItem:()->Unit,
  content: @Composable() () -> Unit
 ){
     val scope = rememberCoroutineScope()
@@ -31,7 +32,7 @@ fun ItemsScaffold(
         onGetItemsFromFirebaseClick()})
     }, floatingActionButton = { 
             QRCodeButton() {
-                Log.d(ContentValues.TAG,"Clicked on floating button 2")
+                scanItem()
             }
         },
     content = {content()})

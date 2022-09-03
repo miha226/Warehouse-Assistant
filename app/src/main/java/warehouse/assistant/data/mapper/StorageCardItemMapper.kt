@@ -10,7 +10,8 @@ fun StorageCardItemEntity.toStorageCardItem():StorageCardItem{
         quantityForSale = quantityForSale,
         quantityForService = quantityForService,
         time = time,
-        itemId = itemId
+        itemId = itemId,
+        price = price
     )
 }
 
@@ -21,6 +22,7 @@ fun StorageCardItem.toStorageCardItemEntity():StorageCardItemEntity{
         quantityForSale = quantityForSale,
         quantityForService = quantityForService,
         time = time,
-        itemId = itemId
+        itemId = itemId,
+        price = price
     )
 }

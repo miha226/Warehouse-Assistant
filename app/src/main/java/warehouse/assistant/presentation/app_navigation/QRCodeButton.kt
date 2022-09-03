@@ -22,6 +22,7 @@ fun QRCodeButton(
     buttonClicked: () -> Unit
 ){
     ElevatedButton(onClick = {
+        buttonClicked()
         Log.d(ContentValues.TAG,"Clicked on floating button")},
         modifier = Modifier
             .height(70.dp), elevation = ButtonDefaults.elevatedButtonElevation(defaultElevation = 4.dp)) {

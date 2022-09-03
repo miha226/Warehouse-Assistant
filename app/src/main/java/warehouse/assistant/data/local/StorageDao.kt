@@ -20,6 +20,9 @@ interface StorageDao {
     @Query("DELETE FROM ItemEntity")
     suspend fun clearAllItems()
 
+    @Delete
+    suspend fun deleteStorage(storageEntity:StorageEntity)
+
     //ITEM
     @Transaction
     @Query("SELECT * FROM ItemEntity WHERE LOWER(itemId) LIKE '%'||LOWER(:query)||'%' OR LOWER(:query) == EAN")
@@ -46,8 +49,22 @@ interface StorageDao {
 
     //STORAGE CARD FOR INDIVIDUAL STORAGE
     @Transaction
-    @Query("SELECT * FROM StorageCard WHERE storageName == :storage AND itemId LIKE '%'||LOWER(:query)||'%'")
-    suspend fun getAllStorageCardItemsForStorageByID(storage: String, query: String): StorageWithStorageCards
+    @RewriteQueriesToDropUnusedColumns
+    @Query("SELECT * FROM StorageCardItemEntity " +
+            "INNER JOIN StorageCard ON StorageCardItemEntity.itemId == StorageCard.itemId " +
+            "AND StorageCardItemEntity.time == StorageCard.time " +
+            "WHERE storageName==(:storage)")
+    suspend fun getAllStorageCardItemsForStorageByID(storage: String): List<StorageCardItemEntity>
 
+    @Transaction
+    @RewriteQueriesToDropUnusedColumns
+    @Query("SELECT * FROM StorageCardItemEntity " +
+            "INNER JOIN StorageCard ON StorageCardItemEntity.itemId == StorageCard.itemId " +
+            "AND StorageCardItemEntity.time == StorageCard.time ")
+    suspend fun getAllStorageCardItems():List<StorageCardItemEntity>
+
+    @Transaction
+    @Query("SELECT * FROM StorageCard")
+    suspend fun getAllStorageCards():List<StorageCard>
 
 }
