@@ -1,12 +1,9 @@
 package warehouse.assistant.presentation.stock_page
 
-import android.content.ContentValues
-import android.content.ContentValues.TAG
-import android.util.Log
+
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
@@ -19,10 +16,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import warehouse.assistant.domain.model.Storage
-import warehouse.assistant.presentation.destinations.ItemsPageDestination
 import warehouse.assistant.presentation.destinations.StorageCardPageDestination
 import warehouse.assistant.presentation.destinations.StoragesPageDestination
-import kotlin.random.Random
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Destination
@@ -33,7 +28,7 @@ fun StockPage(
     viewModel:StockViewModel = hiltViewModel()
 ){
     var state = viewModel.state
-    Log.d(TAG,"doslo je do pocetka $storage")
+
 
     LaunchedEffect(Unit ){
         viewModel.setStorage(storage)
@@ -50,16 +45,16 @@ fun StockPage(
             navigator.navigate(StorageCardPageDestination(storage))
         }) {
  
-            Log.d(TAG,"prije itema ifa ${state.stockItems}")
+
             LazyColumn(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally){
                 items(items = state.stockItems,
                 key = {item -> item.itemID }){ item ->
 
                     Card(modifier = Modifier
                         .fillMaxWidth()
-                        .height(60.dp).padding(bottom = 20.dp)) {
+                        .height(60.dp).padding(vertical = 10.dp)) {
                         Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-                            Box(modifier = Modifier.weight(0.55f), contentAlignment = Alignment.CenterStart) {
+                            Box(modifier = Modifier.weight(0.7f), contentAlignment = Alignment.CenterStart) {
                                 Text(text = item.itemID)
                             }
                             Box(modifier = Modifier.weight(1f), contentAlignment = Alignment.CenterStart) {

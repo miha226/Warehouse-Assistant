@@ -70,7 +70,7 @@ onItemClick: (MenuItem) -> Unit,
                         navigationViewModel.synchronizeLocalAndRemoteDB(){
                             Log.d(ContentValues.TAG,"poziva li ovo 2")
                         }
-                    }) {
+                    },colors = ButtonDefaults.buttonColors(contentColor = MaterialTheme.colorScheme.onPrimary)) {
                         Text(text = "Synchronize database", fontWeight = FontWeight.Bold,
                             fontSize = 20.sp)
                     }
@@ -83,7 +83,7 @@ onItemClick: (MenuItem) -> Unit,
                     ElevatedButton(onClick = {
                         FirebaseAuthImpl.signOut()
                         onItemClick(MenuItems.loginPage)
-                        }) {
+                        },colors = ButtonDefaults.buttonColors(contentColor = MaterialTheme.colorScheme.onPrimary)) {
                         Text(text = "Logout", fontWeight = FontWeight.Bold,
                             fontSize = 20.sp)
                     }

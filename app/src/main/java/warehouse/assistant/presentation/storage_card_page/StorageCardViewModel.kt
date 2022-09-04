@@ -15,7 +15,6 @@ import warehouse.assistant.data.remote.dto.FirebaseAuthImpl
 import warehouse.assistant.domain.model.StorageCardItem
 import warehouse.assistant.domain.model.StorageCardModel
 import warehouse.assistant.domain.repository.StorageRepository
-import warehouse.assistant.presentation.items_page.ItemsPageEvent
 import warehouse.assistant.util.Resource
 import javax.inject.Inject
 

@@ -17,7 +17,7 @@ fun UsersScaffold(
 ){
     val scope = rememberCoroutineScope()
     Scaffold(modifier = Modifier.fillMaxSize(),
-        topBar = { warehouse.assistant.presentation.storages_page.StoragesTopAppBar(onNavigationIconClick = {
+        topBar = { UsersTopAppBar(onNavigationIconClick = {
             scope.launch {
                 drawerState.open()
             }

@@ -81,7 +81,7 @@ fun RegisterPage(
                             }
                         }
                     }
-                }) {
+                },colors = ButtonDefaults.buttonColors(contentColor = MaterialTheme.colorScheme.onPrimary)) {
                     Text(text = "Register")
                 }
 

@@ -81,7 +81,7 @@ fun LoginPage(
                             }
                         }
                     }
-                }) {
+                }, colors = ButtonDefaults.buttonColors(contentColor = MaterialTheme.colorScheme.onPrimary)) {
                     Text(text = "Login")
                 }
 

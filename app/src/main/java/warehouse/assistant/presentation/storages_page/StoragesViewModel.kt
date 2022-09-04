@@ -1,7 +1,6 @@
 package warehouse.assistant.presentation.storages_page
 
 import android.content.ContentValues.TAG
-import android.nfc.Tag
 import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf

@@ -1,8 +1,6 @@
 package warehouse.assistant.presentation.storage_card_page
 
 import warehouse.assistant.domain.model.Item
-import warehouse.assistant.domain.model.StorageCardItem
-import warehouse.assistant.presentation.items_page.ItemsPageEvent
 
 sealed class StorageCardPageEvent{
     data class addStorageCardItemOnCard(

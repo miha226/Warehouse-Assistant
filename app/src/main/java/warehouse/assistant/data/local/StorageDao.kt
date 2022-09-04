@@ -19,20 +19,18 @@ interface StorageDao {
 
     @Query("DELETE FROM ItemEntity")
     suspend fun clearAllItems()
-
     @Delete
     suspend fun deleteStorage(storageEntity:StorageEntity)
-
     //ITEM
     @Transaction
-    @Query("SELECT * FROM ItemEntity WHERE LOWER(itemId) LIKE '%'||LOWER(:query)||'%' OR LOWER(:query) == EAN")
+    @Query("SELECT * FROM ItemEntity WHERE LOWER(itemId)" +
+            " LIKE '%'||LOWER(:query)||'%' OR LOWER(:query) == EAN")
     suspend fun getItemByIdOrEAN(query:String):List<ItemEntity>
 
     //STORAGE
     @Transaction
     @Query("SELECT * FROM StorageEntity")
     suspend fun getAllStorages(): List<StorageEntity>
-
 
     //STORAGECARDITEM
     @Transaction

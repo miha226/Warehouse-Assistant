@@ -42,18 +42,6 @@ class ItemsPageViewModel @Inject constructor(
 
 
 
-    /*fun getItemsFromFirebase(){
-        viewModelScope.launch {
-            var itemslist = firebaseStorage.getItemsFromFirebaseAndConvertToItemsList()
-            delay(2500)
-            if (itemslist!=null){
-                Log.d(ContentValues.TAG,"Test data doso je stream 1")
-                repository.insertItems(itemslist)
-                Log.d(ContentValues.TAG,"Test data doso je stream 2")
-                getItems()
-            }
-        }
-    }*/
 
     fun getItemsFromFirebase(){
         viewModelScope.launch {

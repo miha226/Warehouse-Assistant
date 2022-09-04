@@ -3,11 +3,9 @@ package warehouse.assistant.presentation.users_page
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import warehouse.assistant.data.remote.dto.FirebaseAuthImpl
 import warehouse.assistant.domain.model.AuthorizedUser

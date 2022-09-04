@@ -17,7 +17,6 @@ class NavigationViewModel @Inject constructor(
     fun synchronizeLocalAndRemoteDB(onSynchronizedDone:()->Unit){
         viewModelScope.launch {
             repository.synchronizeLocalAndRemoteDB(){
-                Log.d(ContentValues.TAG,"poziva li ovo ")
                 onSynchronizedDone()
             }
         }

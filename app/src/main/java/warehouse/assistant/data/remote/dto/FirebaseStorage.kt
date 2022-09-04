@@ -32,27 +32,6 @@ class FirebaseStorage @Inject constructor(
     var itemsList:List<Item> = emptyList()
 
 
-    /*suspend fun getItemsFromFirebaseAndConvertToItemsList():List<Item> = withContext(Dispatchers.IO){
-        db.document(Constants.ITEMS).get().addOnSuccessListener { document ->
-                if(document!=null){
-                    //Log.d(TAG,"Document data ${document.data}")
-                    itemsURL=document.data?.get("itemsURL").toString()
-                    //Log.d(TAG,"URL data2 $itemsURL")
-                }
-            }.continueWith{
-                var nesta = storage.getReferenceFromUrl(itemsURL).getStream().addOnSuccessListener { stream ->
-                    CoroutineScope(Dispatchers.IO).launch{
-                        var job = async{
-                            itemsList = itemsParser.parse(stream.stream)
-                            return@async itemsList
-                        }
-                    }
-                }
-            }
-        delay(2000L)
-        return@withContext itemsList
-        }*/
-
     suspend fun getItemsFromFirebaseAndConvertToItemsList(itemsList:(List<Item>)->Unit) {
         db.document(Constants.ITEMS).get().addOnSuccessListener { document ->
             if(document!=null){

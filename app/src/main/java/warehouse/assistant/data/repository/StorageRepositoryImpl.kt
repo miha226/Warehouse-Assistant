@@ -223,10 +223,8 @@ class StorageRepositoryImpl @Inject constructor(
                             storageCardsDB?.toList()?.let { it -> firebaseStorage.updateStorageCards(storageCards = it) }
                         }.continueWith {
                             CoroutineScope(Dispatchers.IO).async{
-                                Log.d(TAG,"kraj u nastavak ")
                                 FirebaseAuthImpl.putUser(getUserByEmail(FirebaseAuthImpl.getUser().email))
                                 onSynchronizedDone()
-                                Log.d(TAG,"kraj u nastavak2 ")
                             }
                         }
                     }

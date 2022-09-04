@@ -1,7 +1,6 @@
 package warehouse.assistant.presentation.items_page
 
-import android.content.ContentValues
-import android.util.Log
+
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -31,7 +30,6 @@ fun ItemsPage(
      ItemsScaffold(drawerState = it, scanItem = {
          isQRScannerOpen=true
      } ,onGetItemsFromFirebaseClick = {
-         Log.d(ContentValues.TAG,"Clicked on menu item proslo 0")
          viewModel.getItemsFromFirebase()
      }) {
          if(isQRScannerOpen){

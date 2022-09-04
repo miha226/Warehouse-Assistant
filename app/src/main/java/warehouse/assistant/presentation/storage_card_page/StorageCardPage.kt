@@ -1,11 +1,9 @@
 package warehouse.assistant.presentation.storage_card_page
 
-import android.content.ContentValues
-import android.util.Log
+
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
@@ -13,7 +11,6 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -21,11 +18,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import warehouse.assistant.data.remote.dto.FirebaseAuthImpl
-import warehouse.assistant.domain.model.Item
 import warehouse.assistant.domain.model.Storage
 import warehouse.assistant.presentation.QRCodeScanner.QRScanner
-import warehouse.assistant.presentation.destinations.QRScannerDestination
-import warehouse.assistant.presentation.items_page.ItemsPageEvent
 import warehouse.assistant.presentation.items_page.SingleItem
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -50,7 +44,6 @@ fun StorageCardPage(
         storageName = storage.storageName,
         navigateBackToStorages = { navigator.navigateUp() },
         scanItem = {
-            Log.d(ContentValues.TAG,"doslo do ovoga2")
             isQRScannerOpen=!isQRScannerOpen }) {
         if(isQRScannerOpen){
             QRScanner( returnCode = {

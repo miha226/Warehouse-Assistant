@@ -1,7 +1,6 @@
 package warehouse.assistant.presentation
 
-import android.content.ContentValues.TAG
-import android.util.Log
+
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -25,9 +24,7 @@ class AuthViewModel @Inject constructor(
          var info = async(Dispatchers.IO){repository.getUserByEmail(email)}
          if(info == null){addUserInLocalDB(email, username = "temp",1){}}
          else{
-            Log.d(TAG,"Usao u setUser ${FirebaseAuthImpl.getUser().username}")
             FirebaseAuthImpl.putUser(info.await())
-            Log.d(TAG,"Usao u setUser2 ${FirebaseAuthImpl.getUser().username}")
             isDone(info.await())
          }
       }
